@@ -23,15 +23,15 @@
         <Menu Grid.ColumnSpan="3">
             <MenuItem Header="Open file" Click="MenuItem_Click"/>
         </Menu>
-        <ListBox Grid.RowSpan="4" Grid.Row="1" Name="listBox" SelectionChanged="listBox_SelectionChanged" SelectionMode="Single"/>
+        <ListBox Grid.RowSpan="4" Grid.Row="1" Name="listBox" SelectionChanged="listBox_SelectionChanged" ItemsSource="{Binding}" DisplayMemberPath="ListBoxToString" IsSynchronizedWithCurrentItem="True" SelectionMode="Single"/>
         <Label Grid.Row="1" Grid.Column="1" Content="id:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20"/>
         <Label Grid.Row="2" Grid.Column="1" Content="name:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20"/>
         <Label Grid.Row="3" Grid.Column="1" Content="age:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20"/>
         <Label Grid.Row="4" Grid.Column="1" Content="score:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20"/>
-        <TextBox Grid.Column="2" Grid.Row="1" Name="idTextBox" Text="{Binding Path=id, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" IsReadOnly="True" BorderThickness="0"/>
-        <TextBox Grid.Column="2" Grid.Row="2" Name="nameTextBox" Text="{Binding Path=name, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" IsReadOnly="True" BorderThickness="0"/>
-        <TextBox Grid.Column="2" Grid.Row="3" Name="ageTextBox" Text="{Binding Path=age, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" IsReadOnly="True" BorderThickness="0"/>
-        <TextBox Grid.Column="2" Grid.Row="4" Name="scoreTextBox" Text="{Binding Path=score, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" IsReadOnly="True" BorderThickness="0"/>
+        <TextBox Grid.Column="2" Grid.Row="1" Name="idTextBox" Text="{Binding Path=Id}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" BorderThickness="0"/>
+        <TextBox Grid.Column="2" Grid.Row="2" Name="nameTextBox" Text="{Binding Path=Name}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" BorderThickness="0"/>
+        <TextBox Grid.Column="2" Grid.Row="3" Name="ageTextBox" Text="{Binding Path=age}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" BorderThickness="0"/>
+        <TextBox Grid.Column="2" Grid.Row="4" Name="scoreTextBox" Text="{Binding Path=score}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" BorderThickness="0"/>
         <StatusBar Grid.Row="5" Grid.ColumnSpan="3">
             <StatusBarItem Name="listCounter" Content="Amount of users in list: 0"/>
             <StatusBarItem Name="lastLoadTimer" HorizontalAlignment="Right" Content="No users loaded yet"/>

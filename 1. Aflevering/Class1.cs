@@ -1,17 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace _1.Aflevering
 {
-    class User
+    class User : INotifyPropertyChanged
     {
-        public int id { get; }
-        public string name { get; }
-        public int age { get; }
-        public int score { get; }
+        public int id;
+        public int Id { 
+            set {
+                id = value;
+                NotifyPropertyChanged(nameof(ListBoxToString));
+            }
+            get { return id; }
+        }
+        public string name;
+        public string Name {
+            set {
+                name = value;
+                NotifyPropertyChanged(nameof(ListBoxToString));
+            }
+            get { return name; }
+        }
+        public int age { get; set; }
+        public int score { get; set; }
 
         public User(int id, string name, int age, int score)
         {
@@ -21,9 +36,13 @@ namespace _1.Aflevering
             this.score = score;
         }
 
-        public override string ToString()
+        public string ListBoxToString { get { return name + ", id: " + id; } }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(string propertyName)
         {
-            return name + ", id: " + id;
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

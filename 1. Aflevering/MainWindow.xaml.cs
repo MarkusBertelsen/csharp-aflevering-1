@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -22,9 +23,12 @@ namespace _1.Aflevering
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ObservableCollection<User> users = new ObservableCollection<User>();
         public MainWindow()
         {
             InitializeComponent();
+
+            listBox.ItemsSource = users;
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -38,7 +42,7 @@ namespace _1.Aflevering
                 {
                     string[] values = text.Split(';');
                     User user = new User(int.Parse(values[0]), values[1], int.Parse(values[2]), int.Parse(values[3]));
-                    listBox.Items.Add(user);
+                    users.Add(user);
                 }
                 listCounter.Content = "Amount of users in list: " + listBox.Items.Count.ToString();
                 lastLoadTimer.Content = "Last time users loaded: " + DateTime.Now.ToString();
